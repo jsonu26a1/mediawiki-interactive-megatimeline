@@ -1,0 +1,93 @@
+===Timeline===
+{{#tag:timeline|
+ImageSize = width:805 height:auto barincrement:25
+PlotArea =left:120 bottom:100 top:0 right:20
+Alignbars = justify
+DateFormat  = dd/mm/yyyy
+Period = from:01/01/1970 till:{{#time:d/m/Y}}
+TimeAxis = orientation:horizontal format:yyyy
+Legend     = orientation:vertical position:bottom columns:3
+ScaleMajor = increment:5 start:1970
+ScaleMinor = increment:1 start:1970
+
+Colors =
+  id:lvocals  value:red         legend:Vocals
+  id:bvocals  value:pink        legend:Backing_vocals 
+  id:lead     value:teal        legend:Lead,_rhythm_guitars
+  id:rhythm   value:brightgreen legend:Rhythm,_lead_guitars
+  id:bass     value:blue        legend:Bass
+  id:keyboard value:purple      legend:Keyboards
+  id:drums    value:orange      legend:Drums,_percussion
+  id:studio   value:black       legend:Studio_albums
+  id:Live     value:gray(0.65)  legend:Live_album
+  id:bars     value:gray(0.9)
+
+BackgroundColors = bars:bars
+
+BarData =
+  bar:Fred  text:"Freddie Mercury"
+  bar:Brian text:"Brian May"
+  bar:Grose text:"Mike Grose"
+  bar:Barry text:"Barry Mitchell"
+  bar:Doug  text:"Doug Bogie"
+  bar:John  text:"John Deacon"
+  bar:Roger text:"Roger Taylor"
+
+PlotData=
+  width:13
+  bar:Fred  from:01/01/1970 till:24/11/1991 color:lvocals
+  bar:Fred  from:01/01/1970 till:24/11/1991 color:keyboard width:3
+  bar:Fred  from:01/06/1979 till:09/08/1986 color:rhythm   width:7
+  bar:Brian from:01/01/1970 till:end        color:lead
+  bar:Brian from:start      till:05/08/1973 color:bvocals  width:3
+  bar:Brian from:05/08/1973 till:end        color:lvocals  width:3
+  bar:Brian from:01/01/1970 till:04/08/1973 color:rhythm   width:7
+  bar:Brian from:31/10/1997 till:end        color:rhythm   width:7
+  bar:Brian from:05/08/1973 till:31/10/1997 color:keyboard width:7
+  bar:Brian from:01/01/1973 till:04/08/1973 color:keyboard width:5
+  bar:Brian from:31/10/1997 till:15/09/2008 color:keyboard width:5
+  bar:Brian from:01/10/2006 till:15/09/2008 color:bass     width:9
+  bar:Grose from:01/01/1970 till:01/09/1970 color:bass
+  bar:Barry from:01/09/1970 till:01/04/1971 color:bass
+  bar:Doug  from:01/04/1971 till:01/09/1971 color:bass
+  bar:John  from:01/09/1971 till:31/10/1997 color:bass
+  bar:John from:05/08/1973  till:31/10/1997 color:bvocals  width:3
+  bar:John  from:05/08/1973 till:31/10/1997 color:rhythm   width:7
+  bar:John from:01/09/1975  till:31/10/1997 color:keyboard width:5
+  bar:Roger from:01/01/1970 till:end        color:drums
+  bar:Roger from:start      till:01/01/1973 color:bvocals  width:3
+  bar:Roger from:01/01/1973 till:end        color:lvocals  width:3
+  bar:Roger from:01/08/1975 till:31/01/1989 color:rhythm   width:7
+  bar:Roger from:31/01/1989 till:15/09/2008 color:keyboard width:7
+  bar:Roger from:06/07/1977 till:14/10/1978 color:bass     width:5
+  bar:Roger from:01/06/1979 till:22/05/1989 color:keyboard width:5
+
+LineData =
+ layer:back color:studio
+  at:13/07/1973
+  at:08/03/1974
+  at:08/11/1974
+  at:21/11/1975
+  at:10/12/1976
+  at:28/10/1977
+  at:10/11/1978
+  at:30/06/1980
+  at:08/12/1980
+  at:21/05/1982
+  at:27/02/1984
+  at:02/06/1986
+  at:22/05/1989
+  at:05/02/1991
+  at:06/11/1995
+ color:live
+  at:22/06/1979
+  at:01/12/1986
+  at:04/12/1986
+  at:26/05/1992
+  at:04/11/2004
+  at:29/10/2007
+  at:20/09/2012
+  at:08/09/2014
+  at:20/11/2015
+  at:04/11/2016
+}}
