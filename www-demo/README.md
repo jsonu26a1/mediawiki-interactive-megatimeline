@@ -8,5 +8,7 @@ traditional "library" like structure, idk what that will look like yet.
 
 - https://www.mediawiki.org/wiki/Markup_spec
 - https://www.mediawiki.org/wiki/Wikitext
+
 - https://www.mediawiki.org/wiki/Extension:EasyTimeline
+- https://www.mediawiki.org/wiki/Extension:EasyTimeline/syntax
 - https://github.com/wikimedia/mediawiki-extensions-timeline/blob/master/scripts/EasyTimeline.pl
