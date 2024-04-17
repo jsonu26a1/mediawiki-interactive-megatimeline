@@ -20,6 +20,42 @@ function parse_wikitext_v0(text) {
   // note; line 7 of sample has recursively embedded {{#time:...}} template
 }
 
+class WtParser {
+  constructor(text) {
+    this.text = text;
+    this.i = 0;
+  }
+  skip(r) {
+    let part = this.text.substring(this.i);
+    let a = r.exec(part);
+    if(a != null) {
+      this.i += a[0].length;
+    }
+  }
+  match(r) {
+    let part = this.text.substring(this.i);
+    let a = r.exec(part);
+    if(a == null) {
+      throw {pos: this.i, text: this.text, re: r};
+    }
+    this.i += a[0].length;
+    return a[0];
+  }
+}
+
+// from https://www.mediawiki.org/wiki/Extension:EasyTimeline/syntax#Available_commands
+let tl_commands = {
+  layout: ["ImageSize", "PlotArea", "Colors", "BackgroundColors", "AlignBars"],
+  presentation: ["DateFormat", "Period", "ScaleMajor", "ScaleMinor", "TimeAxis"],
+  scipt_code: ["Define"],
+  groups: ["BarData", "Legend", "LineData"],
+  events: ["PlotData", "TextData"],
+}
+let tl_all_commands = [];
+for(const prop in tl_commands) {
+  tl_all_commands.push(...tl_commands[prop]);
+}
+
 function parse_wikitext_v1(text) {
   // just some comments of the general process/steps to implement for parsing
   // find `{{` template opening/start
@@ -37,6 +73,23 @@ function parse_wikitext_v1(text) {
   // of `key:value` items in an array to be handled later; parse_wikitext will just return a POJO
   // after the parser is mostly working, we will work on transforming the POJO and work on a mockup
   // for visualizing the data in the timeline template. see resources for original perl impl
+  let r_sp = / +/;
+  let r_ws = /\w*/;
+  let parser = new WtParser(text);
+  parser.skip(/[^\{]*/);
+  parser.match(/\{\{/);
+  // TODO: we SHOULD handle non-timeline templates here, this is temporary
+  parser.match(/#tag:timline\|/);
+  // looking at Extension:EasyTimeline/syntax link, I'm not sure how Commands are distinguished
+  // from attributes; it could be just hard-coded in, let's try doing that (see tl_all_commands)
+  parser.skip(r_ws);
+  // identifier?
+  parser.match(/[A-Za-z]+/);
+  // looking at https://www.mediawiki.org/wiki/Extension:EasyTimeline/syntax#Commands
+  // it appears the parsing of attributes can vary based on the command chosen?
+  // this is a little more complex than I anticipated, but not impossible. might need
+  // to mess around with the syntax in a mediawiki sandbox to see what's valid or not
+  // also take a look at how the perl script does parsing may help.
 }
 
 fetch("data/sample-queen-wikitext.txt").then((res) => {
